@@ -1,2 +1,2 @@
 # openshift-tutorials
-A set of openshift tutorial
+A set of openshift tutorials
