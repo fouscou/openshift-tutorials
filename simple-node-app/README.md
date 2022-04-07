@@ -8,13 +8,7 @@ When deployed, the API of the application would be available on those two endpoi
 Deploy the simple nodejs application on an openshift cluster :
 
 ```shell
-$ oc new-app --as-deployment-config --name simple https://github.com/fouscou/openshift-tutorial.git#master --context-dir simple-nodejs-app
-```
-
-Follow the build configuration log file :
-
-```shell
-$ oc logs -f bc/simple
+$ oc new-app --as-deployment-config --name simple https://github.com/fouscou/openshift-tutorials.git#main --context-dir simple-node-app
 ```
 
 Check that there is a new deployment created :
@@ -22,6 +16,13 @@ Check that there is a new deployment created :
 ```shell
 $ oc status
 ```
+
+Follow the build configuration log :
+
+````shell
+$ oc logs -f bc/simple 
+```
+
 Check the status of the pods :
 
 ```shell
@@ -38,4 +39,11 @@ Get the host of the route :
 
 ```shell
 $ oc get route
+```
+
+Check the API endpoint of the deployed application
+```shell
+$ API_ENDPOINT=$(oc get route simple -o jsonpath='{.spec.host}{"\n"}')
+$ curl $API_ENDPOINT/home
+$ curl $API_ENDPOINT/login
 ```
