@@ -19,7 +19,7 @@ $ oc status
 
 Follow the build configuration log :
 
-````shell
+```shell
 $ oc logs -f bc/simple 
 ```
 
